@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard - Kanban CRM Apex</title>
+    <link rel="stylesheet" href="assets/css/kanban.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <div class="logo-container">
+                <img id="logo" src="assets/images/logo-light.png" alt="Apex Soluções Digitais" class="logo">
+            </div>
+            <h1>Dashboard CRM Apex</h1>
+            <div class="controls">
+                <button id="kanbanBtn" class="kanban-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    Kanban
+                </button>
+                <input type="file" id="csvFile" accept=".csv" style="display: none;">
+                <button id="uploadBtn" class="upload-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7,10 12,15 17,10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Upload CSV
+                </button>
+                <button id="themeToggle" class="theme-toggle">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="errorMessage" class="error-message" style="display: none;"></div>
+        
+        <div id="emptyState" class="empty-state">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21,15 16,10 5,21"></polyline>
+            </svg>
+            <h2>No Data Loaded</h2>
+            <p>Upload a CSV file to view analytics dashboard</p>
+        </div>
+
+        <div id="dashboardContent" class="dashboard-content" style="display: none;">
+            <!-- Summary Cards -->
+            <div class="summary-cards">
+                <div class="summary-card">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <h3 id="totalLeads">0</h3>
+                        <p>Total de Leads</p>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="1" x2="12" y2="23"></line>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <h3 id="totalValue">R$ 0,00</h3>
+                        <p>Valor Total Pipeline</p>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"></polyline>
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <h3 id="conversionRate">0%</h3>
+                        <p>Taxa de Conversão</p>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12,6 12,12 16,14"></polyline>
+                        </svg>
+                    </div>
+                    <div class="card-content">
+                        <h3 id="avgTicket">R$ 0,00</h3>
+                        <p>Ticket Médio</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-section">
+                <div class="chart-container">
+                    <h3>Leads por Etapa</h3>
+                    <canvas id="leadsByStageChart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                    <h3>Valor por Etapa</h3>
+                    <canvas id="valueByStageChart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                    <h3>Funil de Conversão</h3>
+                    <canvas id="conversionFunnelChart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                    <h3>Distribuição por Tipo</h3>
+                    <canvas id="typeDistributionChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Data Table -->
+            <div class="data-table-section">
+                <h3>Análise Detalhada por Etapa</h3>
+                <div class="table-container">
+                    <table id="stageAnalysisTable">
+                        <thead>
+                            <tr>
+                                <th>Etapa</th>
+                                <th>Quantidade</th>
+                                <th>Valor Total</th>
+                                <th>Valor Médio</th>
+                                <th>Percentual</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/kanban.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

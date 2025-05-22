@@ -3,17 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CRM Kanban Visualizer - Apex Soluções Digitais</title>
+    <title>Kanban CRM Apex - Soluções Digitais</title>
     <link rel="stylesheet" href="assets/css/kanban.css">
 </head>
 <body>
     <div class="kanban-container">
         <div class="kanban-header">
             <div class="logo-container">
-                <img id="logo" src="assets/images/logo-light.svg" alt="Apex Soluções Digitais" class="logo">
+                <img id="logo" src="assets/images/logo-light.png" alt="Apex Soluções Digitais" class="logo">
             </div>
-            <h1>CRM Kanban Visualizer</h1>
+            <h1>Kanban CRM Apex</h1>
             <div class="controls">
+                <button id="dashboardBtn" class="dashboard-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    Dashboard
+                </button>
                 <input type="file" id="csvFile" accept=".csv" style="display: none;">
                 <button id="uploadBtn" class="upload-btn">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -46,80 +55,140 @@
         <div id="kanbanBoard" class="kanban-board" style="display: none;">
             <div class="pipeline-stage" data-stage="new">
                 <div class="stage-header">
-                    <h3>New</h3>
-                    <span class="card-count">0</span>
+                    <div class="stage-title-row">
+                        <h3>New</h3>
+                        <span class="card-count">0</span>
+                    </div>
+                    <div class="stage-value-row">
+                        <span>Total:</span>
+                        <span class="stage-value">R$ 0,00</span>
+                    </div>
                 </div>
                 <div class="stage-content"></div>
             </div>
 
             <div class="pipeline-stage" data-stage="prospeccao">
                 <div class="stage-header">
-                    <h3>Prospecção</h3>
-                    <span class="card-count">0</span>
+                    <div class="stage-title-row">
+                        <h3>Prospecção</h3>
+                        <span class="card-count">0</span>
+                    </div>
+                    <div class="stage-value-row">
+                        <span>Total:</span>
+                        <span class="stage-value">R$ 0,00</span>
+                    </div>
                 </div>
                 <div class="stage-content"></div>
             </div>
 
             <div class="pipeline-stage" data-stage="follow_up_a">
                 <div class="stage-header">
-                    <h3>Follow Up A</h3>
-                    <span class="card-count">0</span>
+                    <div class="stage-title-row">
+                        <h3>Follow Up A</h3>
+                        <span class="card-count">0</span>
+                    </div>
+                    <div class="stage-value-row">
+                        <span>Total:</span>
+                        <span class="stage-value">R$ 0,00</span>
+                    </div>
                 </div>
                 <div class="stage-content"></div>
             </div>
 
             <div class="pipeline-stage" data-stage="follow_up_b">
                 <div class="stage-header">
-                    <h3>Follow Up B</h3>
-                    <span class="card-count">0</span>
+                    <div class="stage-title-row">
+                        <h3>Follow Up B</h3>
+                        <span class="card-count">0</span>
+                    </div>
+                    <div class="stage-value-row">
+                        <span>Total:</span>
+                        <span class="stage-value">R$ 0,00</span>
+                    </div>
                 </div>
                 <div class="stage-content"></div>
             </div>
 
             <div class="pipeline-stage" data-stage="follow_up_c">
                 <div class="stage-header">
-                    <h3>Follow Up C</h3>
-                    <span class="card-count">0</span>
+                    <div class="stage-title-row">
+                        <h3>Follow Up C</h3>
+                        <span class="card-count">0</span>
+                    </div>
+                    <div class="stage-value-row">
+                        <span>Total:</span>
+                        <span class="stage-value">R$ 0,00</span>
+                    </div>
                 </div>
                 <div class="stage-content"></div>
             </div>
 
             <div class="pipeline-stage" data-stage="agenda_reuniao">
                 <div class="stage-header">
-                    <h3>Agenda Reunião</h3>
-                    <span class="card-count">0</span>
+                    <div class="stage-title-row">
+                        <h3>Agenda Reunião</h3>
+                        <span class="card-count">0</span>
+                    </div>
+                    <div class="stage-value-row">
+                        <span>Total:</span>
+                        <span class="stage-value">R$ 0,00</span>
+                    </div>
                 </div>
                 <div class="stage-content"></div>
             </div>
 
             <div class="pipeline-stage" data-stage="follow_up_d">
                 <div class="stage-header">
-                    <h3>Follow Up D</h3>
-                    <span class="card-count">0</span>
+                    <div class="stage-title-row">
+                        <h3>Follow Up D</h3>
+                        <span class="card-count">0</span>
+                    </div>
+                    <div class="stage-value-row">
+                        <span>Total:</span>
+                        <span class="stage-value">R$ 0,00</span>
+                    </div>
                 </div>
                 <div class="stage-content"></div>
             </div>
 
             <div class="pipeline-stage" data-stage="follow_up_e">
                 <div class="stage-header">
-                    <h3>Follow Up E</h3>
-                    <span class="card-count">0</span>
+                    <div class="stage-title-row">
+                        <h3>Follow Up E</h3>
+                        <span class="card-count">0</span>
+                    </div>
+                    <div class="stage-value-row">
+                        <span>Total:</span>
+                        <span class="stage-value">R$ 0,00</span>
+                    </div>
                 </div>
                 <div class="stage-content"></div>
             </div>
 
             <div class="pipeline-stage" data-stage="won">
                 <div class="stage-header">
-                    <h3>Won</h3>
-                    <span class="card-count">0</span>
+                    <div class="stage-title-row">
+                        <h3>Won</h3>
+                        <span class="card-count">0</span>
+                    </div>
+                    <div class="stage-value-row">
+                        <span>Total:</span>
+                        <span class="stage-value">R$ 0,00</span>
+                    </div>
                 </div>
                 <div class="stage-content"></div>
             </div>
 
             <div class="pipeline-stage" data-stage="lost">
                 <div class="stage-header">
-                    <h3>Lost</h3>
-                    <span class="card-count">0</span>
+                    <div class="stage-title-row">
+                        <h3>Lost</h3>
+                        <span class="card-count">0</span>
+                    </div>
+                    <div class="stage-value-row">
+                        <span>Total:</span>
+                        <span class="stage-value">R$ 0,00</span>
+                    </div>
                 </div>
                 <div class="stage-content"></div>
             </div>

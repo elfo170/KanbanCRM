@@ -15,6 +15,14 @@ class KanbanCRM {
         const uploadBtn = document.getElementById('uploadBtn');
         const csvFile = document.getElementById('csvFile');
         const themeToggle = document.getElementById('themeToggle');
+        const dashboardBtn = document.getElementById('dashboardBtn');
+
+        // Dashboard button click
+        if (dashboardBtn) {
+            dashboardBtn.addEventListener('click', () => {
+                window.location.href = 'dashboard.html';
+            });
+        }
 
         // Upload button click
         uploadBtn.addEventListener('click', () => {
@@ -188,9 +196,27 @@ class KanbanCRM {
     renderStage(stageElement, contacts) {
         const stageContent = stageElement.querySelector('.stage-content');
         const cardCount = stageElement.querySelector('.card-count');
+        const stageValue = stageElement.querySelector('.stage-value');
         
-        // Update card count
+        // Calculate total value for this stage
+        const totalValue = contacts.reduce((sum, contact) => {
+            const value = parseFloat(contact.value) || 0;
+            return sum + value;
+        }, 0);
+        
+        // Format value as currency
+        const formatValue = (value) => {
+            return new Intl.NumberFormat('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            }).format(value);
+        };
+        
+        // Update card count and stage value
         cardCount.textContent = contacts.length;
+        if (stageValue) {
+            stageValue.textContent = formatValue(totalValue);
+        }
         
         // Clear existing content
         stageContent.innerHTML = '';
@@ -324,8 +350,8 @@ class KanbanCRM {
             }
             
             logo.src = this.currentTheme === 'light' ? 
-                `${basePath}/assets/images/logo-light.svg` : 
-                `${basePath}/assets/images/logo-dark.svg`;
+                `${basePath}/assets/images/logo-light.png` : 
+                `${basePath}/assets/images/logo-dark.png`;
         }
     }
 

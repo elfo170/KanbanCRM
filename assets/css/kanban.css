@@ -84,7 +84,7 @@ body {
     flex-shrink: 0;
 }
 
-.upload-btn, .theme-toggle {
+.dashboard-btn, .upload-btn, .theme-toggle {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -99,7 +99,7 @@ body {
     font-weight: 500;
 }
 
-.upload-btn:hover, .theme-toggle:hover {
+.dashboard-btn:hover, .upload-btn:hover, .theme-toggle:hover {
     background: rgba(255, 255, 255, 0.2);
     border-color: rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
@@ -146,10 +146,11 @@ body {
 }
 
 .kanban-board {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
     gap: 20px;
     min-height: 600px;
+    overflow-x: auto;
+    padding-bottom: 20px;
 }
 
 .pipeline-stage {
@@ -160,6 +161,8 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 500px;
+    min-width: 280px;
+    flex-shrink: 0;
     transition: all 0.3s ease;
 }
 
@@ -175,8 +178,22 @@ body {
     border-radius: 12px 12px 0 0;
     color: white;
     display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.stage-title-row {
+    display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.stage-value-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    opacity: 0.9;
 }
 
 .stage-header h3 {
