@@ -150,7 +150,10 @@ body {
     gap: 20px;
     min-height: 600px;
     overflow-x: auto;
+    overflow-y: hidden;
     padding-bottom: 20px;
+    width: 100%;
+    flex-wrap: nowrap;
 }
 
 .pipeline-stage {
@@ -325,8 +328,9 @@ body {
     }
     
     .kanban-board {
-        grid-template-columns: 1fr;
+        flex-direction: row;
         gap: 15px;
+        overflow-x: auto;
     }
     
     .pipeline-stage {

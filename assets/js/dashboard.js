@@ -26,22 +26,30 @@ class DashboardCRM {
         }
 
         // Upload button click
-        uploadBtn.addEventListener('click', () => {
-            csvFile.click();
-        });
+        if (uploadBtn) {
+            uploadBtn.addEventListener('click', () => {
+                if (csvFile) {
+                    csvFile.click();
+                }
+            });
+        }
 
         // File input change
-        csvFile.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                this.handleFileUpload(file);
-            }
-        });
+        if (csvFile) {
+            csvFile.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    this.handleFileUpload(file);
+                }
+            });
+        }
 
         // Theme toggle
-        themeToggle.addEventListener('click', () => {
-            this.toggleTheme();
-        });
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                this.toggleTheme();
+            });
+        }
     }
 
     handleFileUpload(file) {
@@ -414,11 +422,11 @@ class DashboardCRM {
     }
 
     saveDataToStorage() {
-        localStorage.setItem('crm-dashboard-data', JSON.stringify(this.data));
+        localStorage.setItem('crm-kanban-data', JSON.stringify(this.data));
     }
 
     loadDataFromStorage() {
-        const savedData = localStorage.getItem('crm-dashboard-data');
+        const savedData = localStorage.getItem('crm-kanban-data');
         if (savedData) {
             try {
                 this.data = JSON.parse(savedData);

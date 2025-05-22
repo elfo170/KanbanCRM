@@ -9,6 +9,7 @@ class KanbanCRM {
     init() {
         this.setupEventListeners();
         this.loadTheme();
+        this.loadDataFromStorage();
     }
 
     setupEventListeners() {
@@ -20,6 +21,8 @@ class KanbanCRM {
         // Dashboard button click
         if (dashboardBtn) {
             dashboardBtn.addEventListener('click', () => {
+                // Save current data before navigating
+                this.saveDataToStorage();
                 window.location.href = 'dashboard.html';
             });
         }
@@ -136,6 +139,7 @@ class KanbanCRM {
             }
 
             this.data = data;
+            this.saveDataToStorage();
             this.hideError();
             this.renderKanban();
             
@@ -365,6 +369,24 @@ class KanbanCRM {
             this.currentTheme = savedTheme;
         }
         this.applyTheme();
+    }
+
+    saveDataToStorage() {
+        localStorage.setItem('crm-kanban-data', JSON.stringify(this.data));
+    }
+
+    loadDataFromStorage() {
+        const savedData = localStorage.getItem('crm-kanban-data');
+        if (savedData) {
+            try {
+                this.data = JSON.parse(savedData);
+                if (this.data.length > 0) {
+                    this.renderKanban();
+                }
+            } catch (error) {
+                console.error('Error loading saved data:', error);
+            }
+        }
     }
 }
 
