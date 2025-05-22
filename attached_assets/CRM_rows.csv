@@ -1,0 +1,6 @@
+id,created_at,name,email,type,value,pipeline_stage,is_wpp,respondeu_contato,final,last_message,phone,timeout
+21,2025-05-21 20:28:16.843012-03,Leo Macieira,,Disparo,1500,prospeccao,true,,false,2025-05-21T20:29:22.297-03:00,5531983197997,
+22,2025-05-21 20:28:16.843012-03,Kiitos Hamburgueria,,Disparo,1500,prospeccao,true,,false,2025-05-21T20:29:29.764-03:00,5531999999999,
+23,2025-05-21 20:32:30.670727-03,Gabriel Saturnino,gabrielfs@gmail.com,Inbound,1500,agenda_reuniao,,,true,2025-05-21T20:32:29.416-03:00,5531982133445,
+25,2025-05-22 01:05:30.729165-03,Fabiana Camargo,testeastrolobiapex@gmail.com,Inbound,1500,agenda_reuniao,,,true,2025-05-22T01:07:46.802-03:00,5531994517523,
+26,2025-05-22 02:18:51.797543-03,Rafael Macieira,,Inbound,1500,new,true,true,,,5531998135791,
