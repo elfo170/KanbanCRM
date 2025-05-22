@@ -1,0 +1,128 @@
+<?php
+/*
+Template Name: Kanban CRM
+*/
+get_header(); ?>
+
+<div class="kanban-container">
+    <div class="kanban-header">
+        <div class="logo-container">
+            <img id="logo" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo-light.svg" alt="Apex Soluções Digitais" class="logo">
+        </div>
+        <h1>CRM Kanban Visualizer</h1>
+        <div class="controls">
+            <input type="file" id="csvFile" accept=".csv" style="display: none;">
+            <button id="uploadBtn" class="upload-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7,10 12,15 17,10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Upload CSV
+            </button>
+            <button id="themeToggle" class="theme-toggle">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div id="errorMessage" class="error-message" style="display: none;"></div>
+    <div id="emptyState" class="empty-state">
+        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+            <polyline points="21,15 16,10 5,21"></polyline>
+        </svg>
+        <h2>No Data Loaded</h2>
+        <p>Upload a CSV file to visualize your CRM pipeline</p>
+    </div>
+
+    <div id="kanbanBoard" class="kanban-board" style="display: none;">
+        <div class="pipeline-stage" data-stage="new">
+            <div class="stage-header">
+                <h3>New</h3>
+                <span class="card-count">0</span>
+            </div>
+            <div class="stage-content"></div>
+        </div>
+
+        <div class="pipeline-stage" data-stage="prospeccao">
+            <div class="stage-header">
+                <h3>Prospecção</h3>
+                <span class="card-count">0</span>
+            </div>
+            <div class="stage-content"></div>
+        </div>
+
+        <div class="pipeline-stage" data-stage="follow_up_a">
+            <div class="stage-header">
+                <h3>Follow Up A</h3>
+                <span class="card-count">0</span>
+            </div>
+            <div class="stage-content"></div>
+        </div>
+
+        <div class="pipeline-stage" data-stage="follow_up_b">
+            <div class="stage-header">
+                <h3>Follow Up B</h3>
+                <span class="card-count">0</span>
+            </div>
+            <div class="stage-content"></div>
+        </div>
+
+        <div class="pipeline-stage" data-stage="follow_up_c">
+            <div class="stage-header">
+                <h3>Follow Up C</h3>
+                <span class="card-count">0</span>
+            </div>
+            <div class="stage-content"></div>
+        </div>
+
+        <div class="pipeline-stage" data-stage="agenda_reuniao">
+            <div class="stage-header">
+                <h3>Agenda Reunião</h3>
+                <span class="card-count">0</span>
+            </div>
+            <div class="stage-content"></div>
+        </div>
+
+        <div class="pipeline-stage" data-stage="follow_up_d">
+            <div class="stage-header">
+                <h3>Follow Up D</h3>
+                <span class="card-count">0</span>
+            </div>
+            <div class="stage-content"></div>
+        </div>
+
+        <div class="pipeline-stage" data-stage="follow_up_e">
+            <div class="stage-header">
+                <h3>Follow Up E</h3>
+                <span class="card-count">0</span>
+            </div>
+            <div class="stage-content"></div>
+        </div>
+
+        <div class="pipeline-stage" data-stage="won">
+            <div class="stage-header">
+                <h3>Won</h3>
+                <span class="card-count">0</span>
+            </div>
+            <div class="stage-content"></div>
+        </div>
+
+        <div class="pipeline-stage" data-stage="lost">
+            <div class="stage-header">
+                <h3>Lost</h3>
+                <span class="card-count">0</span>
+            </div>
+            <div class="stage-content"></div>
+        </div>
+    </div>
+</div>
+
+<script src="<?php echo get_template_directory_uri(); ?>/assets/js/kanban.js"></script>
+
+<?php get_footer(); ?>

@@ -1,0 +1,29 @@
+<svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="lightGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Letter A -->
+  <path d="M20 180 L50 50 L80 180 M35 130 L65 130" 
+        stroke="url(#lightGradient)" 
+        stroke-width="12" 
+        fill="none" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"/>
+  
+  <!-- Apex text -->
+  <text x="110" y="110" 
+        font-family="Arial, sans-serif" 
+        font-size="48" 
+        font-weight="bold" 
+        fill="#1f2937">apex</text>
+  
+  <!-- Soluções Digitais text -->
+  <text x="110" y="140" 
+        font-family="Arial, sans-serif" 
+        font-size="16" 
+        fill="#6b7280">Soluções Digitais</text>
+</svg>
