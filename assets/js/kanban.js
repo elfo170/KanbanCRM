@@ -23,7 +23,12 @@ class KanbanCRM {
             dashboardBtn.addEventListener('click', () => {
                 // Save current data before navigating
                 this.saveDataToStorage();
-                window.location.href = 'dashboard.html';
+                // Check if we're in WordPress or standalone
+                if (window.location.hostname.includes('localhost') || window.location.pathname.includes('.html')) {
+                    window.location.href = 'dashboard.html';
+                } else {
+                    window.location.href = '/dashboard/';
+                }
             });
         }
 

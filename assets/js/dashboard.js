@@ -21,7 +21,12 @@ class DashboardCRM {
         // Kanban button click
         if (kanbanBtn) {
             kanbanBtn.addEventListener('click', () => {
-                window.location.href = 'standalone.html';
+                // Check if we're in WordPress or standalone
+                if (window.location.hostname.includes('localhost') || window.location.pathname.includes('.html')) {
+                    window.location.href = 'standalone.html';
+                } else {
+                    window.location.href = '/kanban/';
+                }
             });
         }
 
