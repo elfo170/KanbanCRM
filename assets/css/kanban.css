@@ -328,13 +328,18 @@ body {
     }
     
     .kanban-board {
-        flex-direction: row;
+        display: flex !important;
+        flex-direction: row !important;
         gap: 15px;
         overflow-x: auto;
+        overflow-y: hidden;
+        flex-wrap: nowrap !important;
     }
     
     .pipeline-stage {
         min-height: auto;
+        min-width: 280px !important;
+        flex-shrink: 0 !important;
     }
     
     .controls {
@@ -363,6 +368,23 @@ body {
     
     .stage-content {
         padding: 10px;
+    }
+    
+    .kanban-board {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 10px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        flex-wrap: nowrap !important;
+        width: 100%;
+    }
+    
+    .pipeline-stage {
+        min-width: 250px !important;
+        max-width: 250px !important;
+        flex-shrink: 0 !important;
+        flex-grow: 0 !important;
     }
 }
 
