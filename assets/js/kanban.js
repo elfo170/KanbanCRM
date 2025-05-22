@@ -176,7 +176,12 @@ class KanbanCRM {
         
         // Hide empty state and show kanban board
         emptyState.style.display = 'none';
-        kanbanBoard.style.display = 'grid';
+        kanbanBoard.style.display = 'flex';
+        kanbanBoard.style.flexDirection = 'row';
+        kanbanBoard.style.overflowX = 'auto';
+        kanbanBoard.style.overflowY = 'hidden';
+        kanbanBoard.style.flexWrap = 'nowrap';
+        kanbanBoard.style.gap = '20px';
 
         // Get all pipeline stages
         const stages = ['new', 'prospeccao', 'follow_up_a', 'follow_up_b', 'follow_up_c', 

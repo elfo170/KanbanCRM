@@ -146,14 +146,16 @@ body {
 }
 
 .kanban-board {
-    display: flex;
+    display: flex !important;
+    flex-direction: row !important;
     gap: 20px;
     min-height: 600px;
     overflow-x: auto;
     overflow-y: hidden;
     padding-bottom: 20px;
     width: 100%;
-    flex-wrap: nowrap;
+    flex-wrap: nowrap !important;
+    white-space: nowrap;
 }
 
 .pipeline-stage {
@@ -161,11 +163,14 @@ body {
     border-radius: 12px;
     box-shadow: var(--shadow);
     border: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
     min-height: 500px;
-    min-width: 280px;
-    flex-shrink: 0;
+    min-width: 300px !important;
+    max-width: 300px !important;
+    width: 300px !important;
+    flex-shrink: 0 !important;
+    flex-grow: 0 !important;
     transition: all 0.3s ease;
 }
 
